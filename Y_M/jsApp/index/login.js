@@ -4,11 +4,25 @@ import {
   Text,
   TextInput,
   ScrollView,
+  Platform,
+  Dimensions,
   TouchableHighlight,
   View
 } from 'react-native';
-import pageUI from "../lib/ios/css/page.ui";
-import formUI from "../lib/ios/css/form.ui";
+
+//import css
+let pageUI,formUI;
+if(Platform.OS === 'android'){
+	pageUI = require("../lib/android/css/page.ui");
+	formUI = require("../lib/android/css/form.ui");
+} else if(Platform.OS === 'ios'){
+	pageUI = require("../lib/ios/css/page.ui");
+	formUI = require("../lib/ios/css/form.ui");
+}
+
+
+//import view
+import signup from "./signup";
 
 
 class login extends Component {
@@ -42,6 +56,21 @@ class login extends Component {
 		)
 	}
 
+	//跳转到注册页面
+	_gotoSignup(){
+		this._gotoPage(signup,'Y_M');
+	}
+
+	_gotoPage(component, name){
+		this.props.navigator.push({
+			params: {
+				title:name
+			},
+      		title:name,
+			component: component
+		});
+	}
+	
 	render() {
     return (
     	<ScrollView style={pageUI.container} keyboardShouldPersistTaps={true}>
@@ -73,8 +102,8 @@ class login extends Component {
 	        <TouchableHighlight underlayColor={'#f07000'} style={formUI.touchable}>
 			    <View><Text style={formUI.buttonTxt}>确定</Text></View>
 			</TouchableHighlight>
-			<View style={[pageUI.titleView,{marginTop:16}]}>
-				<TouchableHighlight underlayColor={'#f07000'}>
+			<View style={[pageUI.titleView,{marginTop:16,height:50}]}>
+				<TouchableHighlight style={{position:'absolute',right:16}} underlayColor={'#00000000'} onPress={this._gotoSignup.bind(this)}>
 			    	<Text style={{color:'#f07000'}}>注册</Text>
 				</TouchableHighlight>
 			</View>

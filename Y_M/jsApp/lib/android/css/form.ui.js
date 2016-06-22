@@ -16,9 +16,11 @@ const styles = StyleSheet.create({
 	textInput:{
 		fontSize:20,
 	    height: 50,
+	    backgroundColor: '#00000000',
 	    paddingLeft: 12,
 	    paddingTop:12,
-	    paddingBottom:12
+	    paddingBottom:12,
+	    borderRadius: 4
 	},
 	touchable : {
 	    height: 45,
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
 	buttonTxt:{
 		fontSize: 20,
 	    textAlign: 'center',
-	    marginTop: 13,
+	    marginTop: 9,
 	    marginBottom: 10,
 	    color:'#FFFFFF'
 	}

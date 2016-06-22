@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   Navigator,
+  TouchableOpacity,
   InteractionManager,
   Platform,
   View
@@ -67,7 +68,7 @@ class Y_M extends Component {
               <TouchableOpacity 
                 onPress={() => navigator.pop()}
                 style={styles.button}>
-                <Text style={styles.buttonText}>Back</Text>
+                <Text style={styles.buttonText}>back</Text>
               </TouchableOpacity>
             );
           } else {

@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Dimensions,
   Text,
   Navigator,
   TouchableOpacity,
@@ -24,7 +25,7 @@ const defaultRoute = {
 
 const styles = {
   title: {
-    flex: 1, justifyContent: 'center', alignItems: 'center'
+    flex: 1, justifyContent: 'center', alignItems: 'center',position:'absolute',right:0,width:Dimensions.get('window').width,top:15
   },
   button: {
     flex: 1, width: 50, alignItems: 'center', justifyContent: 'center'
@@ -33,7 +34,7 @@ const styles = {
     fontSize: 18, color: '#FFFFFF', fontWeight: '400'
   },
   navigationBar: {
-    alignItems: 'center', backgroundColor: '#ff7e00',shadowColor: '#f07100',
+    alignItems: 'center', backgroundColor: '#ff7e00',shadowColor: '#f07100',flexDirection: 'row',
     shadowOpacity: 0.8,
     shadowOffset:{width: 1, height: 0.3 }
   }
@@ -80,8 +81,8 @@ class Y_M extends Component {
         },
         Title(route, navigator, index, navState) {
           return (
-              <View style={styles.title}>
-               <Text style={styles.buttonText}>{route.title ? route.title : 'Y_M'}</Text>
+            <View style={styles.title}>
+              <Text style={styles.buttonText}>{route.title ? route.title : 'Y_M'}</Text>
             </View>
           );
         }

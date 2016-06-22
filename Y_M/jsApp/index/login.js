@@ -73,7 +73,11 @@ class login extends Component {
 	        <TouchableHighlight underlayColor={'#f07000'} style={formUI.touchable}>
 			    <View><Text style={formUI.buttonTxt}>确定</Text></View>
 			</TouchableHighlight>
-
+			<View style={[pageUI.titleView,{marginTop:16}]}>
+				<TouchableHighlight underlayColor={'#f07000'}>
+			    	<Text style={{color:'#f07000'}}>注册</Text>
+				</TouchableHighlight>
+			</View>
       	</ScrollView>
     	)
 	}

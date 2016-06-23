@@ -65,7 +65,6 @@ class signup extends Component {
 	}
 
 	_signupUser(){
-		
 		reqHttp.setServiceParams({
     		"interfaceName":"controller/util/Random.json",
     		"flagSign":0,

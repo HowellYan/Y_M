@@ -10,6 +10,8 @@ import {
   View
 } from 'react-native';
 
+import reqHttp from "../lib/reqHttp";
+
 let pageUI,formUI;
 if(Platform.OS === 'android'){
 	pageUI = require("../lib/android/css/page.ui");
@@ -36,6 +38,9 @@ class signup extends Component {
             }
             return false;
       	});
+
+    	
+
     }
 
 	_textInputChange(text){
@@ -58,6 +63,25 @@ class signup extends Component {
 			</View>
 		)
 	}
+
+	_signupUser(){
+		
+		reqHttp.setServiceParams({
+    		"interfaceName":"controller/util/Random.json",
+    		"flagSign":0,
+    		"readableMap":{"phone":"15817161961"},
+    		"actionCallback":(url,strJson)=>{
+    			reqHttp.callHttpService({
+                        'Url': url,
+                        'Params': strJson,
+                        'Success': (Params)=>{
+                        	console.log(Params);
+                        }
+                    });
+    		}
+    	});
+	}
+
 
 	render() {
     return (
@@ -93,7 +117,7 @@ class signup extends Component {
 		        </TextInput>
 	        </View>
 	        {this._setTitleView()}
-	        <TouchableHighlight underlayColor={'#f07000'} style={formUI.touchable}>
+	        <TouchableHighlight underlayColor={'#f07000'} style={formUI.touchable} onPress={this._signupUser.bind(this)}>
 			    <View><Text style={formUI.buttonTxt}>确定</Text></View>
 			</TouchableHighlight>
       	</ScrollView>
